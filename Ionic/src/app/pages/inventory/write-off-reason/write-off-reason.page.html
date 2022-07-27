@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar mode="ios">
+    <!--Menu toggle button that will display the menu-->
+      <ion-buttons slot="start">
+        <ion-menu-button menu="mainMenu"></ion-menu-button>
+      </ion-buttons>
+      <ion-title slot="">Write-Off Reason</ion-title>
+      <img src="../../assets/BSC.png" width="80px" height="80px" alt="logo" slot="end">
+      <!--Can we change this dynamically when switching between tabs?-->
+    <!-- </ion-item> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <br/>
+  <!--Searchbar (must make function to search)-->
+  <ion-searchbar expand="block" placeholder='Search Write-Off Reason...' [(ngModel)]="filter"
+  animated="true" debounce="200"></ion-searchbar>
+  <br/><br/>
+
+  <div class="ion-text-center">
+    <ion-button color="success" style="margin-left:30%;margin-right:30%" (click)="writeOffReasonService.addWriteOffReasonInfoModal()">
+      Add Write-Off Reason
+    </ion-button>
+  </div>
+  <br/>
+
+  <ion-grid *ngIf="!isLoading" >
+    <ion-list *ngFor="let wr of writeOffReasonList | filter:filter, let i = index">
+      <ion-item-sliding >
+        <ion-item button (click)="writeOffReasonService.viewWriteOffReasonInfoModal(wr)" >
+          <ion-label style="padding-left:2% ;">
+            <h1>{{wr.description}}</h1>
+          </ion-label >
+          <ion-icon name="chevron-back-outline" size="small"></ion-icon>
+        </ion-item>
+        <ion-item-options side="end" >
+          <ion-item-option color="secondary" (click)="writeOffReasonService.updateWriteOffReasonInfoModal(wr)">Update<ion-icon name="refresh" size="large"></ion-icon></ion-item-option>
+          <ion-item-option color="danger" (click)="writeOffReasonService.deleteWriteOffReasonInfoModal(wr)">Delete<ion-icon name="trash" size="large"></ion-icon></ion-item-option>
+        </ion-item-options>
+      </ion-item-sliding>
+    </ion-list>
+  </ion-grid>
+
+  <div class="ion-text-center " *ngIf="isLoading">
+    <ion-spinner name="circles"></ion-spinner>
+  </div>
+</ion-content>

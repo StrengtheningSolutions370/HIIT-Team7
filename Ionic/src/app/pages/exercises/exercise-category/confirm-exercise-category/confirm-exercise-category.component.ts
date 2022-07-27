@@ -13,7 +13,7 @@ export class ConfirmExerciseCategoryComponent {
   @Input() choice: number;
   @Input() exerciseCategory: ExerciseCategory;
 
-  constructor(private global: GlobalService, public exerciseService: ExerciseService ) {
+  constructor(public global: GlobalService, public exerciseService: ExerciseService ) {
   }
 
   async checkMatch(name:string, description:string): Promise<boolean>{

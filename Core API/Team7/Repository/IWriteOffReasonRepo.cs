@@ -13,11 +13,13 @@ namespace Team7.Models.Repository
 
         void Update<T>(T Entity) where T : class;
 
-        //Task<WriteOffReason[]> GetAllWriteOffReasonsAsync();
+        Task<object> GetAllWriteOffReasonsAsync();
 
-        //Task<WriteOffReason[]> GetWriteOffReasonsAsync(string input);
+        Task<object> GetWriteOffReasonsAsync(string description);
 
-        //Task<WriteOffReason> GetWriteOffReasonIdAsync(int id);
+        Task<object> GetWriteOffReasonIdAsync(int id);
+
+        Task<WriteOffReason> _GetWriteOffReasonIdAsync(int id);
 
         Task<bool> SaveChangesAsync();
     }

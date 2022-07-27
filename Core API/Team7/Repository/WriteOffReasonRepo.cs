@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -32,42 +33,88 @@ namespace Team7.Models.Repository
         }
 
 
-        //public async Task<WriteOffReason[]> GetAllWriteOffReasonsAsync()
-        //{
-        //    IQueryable<WriteOffReason> query = DB.WriteOffReason;
-        //    return await query.ToArrayAsync();
-        //    return null;
+        public async Task<object> GetAllWriteOffReasonsAsync()
+        {
+            IQueryable<WriteOffReason> query = DB.WriteOffReason;
+            if (!query.Any())
+            {
+                return null;
+            }
+            return new
+            {
+                result = await query.Select(wr => new
+                {
+                    wr.WriteOffReasonID,
+                    wr.Description,
+                    WriteOffLine = 
+                    wr
+                     .WriteOffLine
+                     .Select(wl => new { wl.WriteOffLineID, wl.Quantity})
+                }).ToListAsync()
+            };
+        }
 
-        //}
+        public async Task<object> GetWriteOffReasonsAsync(string description)
+        {
+            IQueryable<WriteOffReason> query = DB.WriteOffReason.Where(wr => wr.Description == description);
+            if (!query.Any())
+            {
+                return null;
+            }
+            else
+            {
+                return new
+                {
+                    result = await query.Select(wr => new
+                    {
+                        wr.WriteOffReasonID,
+                        wr.Description,
+                        WriteOffLine =
+                        wr
+                        .WriteOffLine
+                        .Select(wl => new { wl.WriteOffLineID, wl.Quantity })
+                    }).ToListAsync()
+                };
+            }
 
-        //public async Task<WriteOffReason[]> GetWriteOffReasonsAsync(string input)
-        //{
-        //    IQueryable<WriteOffReason> query = DB.WriteOffReason.Where(v => v.Name == input || v.Address == input);
-        //    if (!query.Any())
-        //    {
-        //        return null;
-        //    }
-        //    else
-        //    {
-        //        return await query.ToArrayAsync();
-        //    }
-        //    return null;
+        }
 
-        //}
+        public async Task<object> GetWriteOffReasonIdAsync(int id)
+        {
+            IQueryable<WriteOffReason> query = DB.WriteOffReason.Where(wr => wr.WriteOffReasonID == id);
+            if (!query.Any())
+            {
+                return null;
+            }
+            else
+            {
+                return new
+                {
+                    result = await query.Select(wr => new
+                    {
+                        wr.WriteOffReasonID,
+                        wr.Description,
+                        WriteOffLine =
+                        wr
+                        .WriteOffLine
+                        .Select(wl => new { wl.WriteOffLineID, wl.Quantity })
+                    }).ToListAsync()
+                };
+            }
+        }
 
-        //public async Task<WriteOffReason> GetWriteOffReasonIdAsync(int id)
-        //{
-        //    IQueryable<WriteOffReason> query = DB.WriteOffReason.Where(v => v.VenueID == id);
-        //    if (!query.Any())
-        //    {
-        //        return null;
-        //    }
-        //    else
-        //    {
-        //        return await query.SingleAsync();
-        //    }
-        //    return null;
-        //}
+        public async Task<WriteOffReason> _GetWriteOffReasonIdAsync(int id)
+        {
+            IQueryable<WriteOffReason> query = DB.WriteOffReason.Where(wr => wr.WriteOffReasonID == id);
+            if (!query.Any())
+            {
+                return null;
+            }
+            else
+            {
+                return await query.SingleAsync();
+            }
+        }
 
         public async Task<bool> SaveChangesAsync()
         {

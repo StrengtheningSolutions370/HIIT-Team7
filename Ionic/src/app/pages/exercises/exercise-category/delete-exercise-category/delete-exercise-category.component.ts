@@ -11,7 +11,7 @@ import { GlobalService } from 'src/app/services/global/global.service';
 export class DeleteExerciseCategoryComponent {
   @Input() exerciseCategory: ExerciseCategory;
 
-  constructor(private global: GlobalService,
+  constructor(public global: GlobalService,
   public exerciseService: ExerciseService) { }
 
 

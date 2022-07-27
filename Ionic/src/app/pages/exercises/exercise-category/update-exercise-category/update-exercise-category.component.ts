@@ -18,7 +18,7 @@ export class UpdateExerciseCategoryComponent implements ViewWillEnter {
     exerciseCategoryName: new FormControl('', [Validators.required])
   });
 
-  constructor(private global: GlobalService, public fb: FormBuilder,
+  constructor(public global: GlobalService, public fb: FormBuilder,
     public exerciseService: ExerciseService) { }
 
   //Used for validation within the form, if there are errors in the control, this method will return the errors.

@@ -4,18 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { InventoryPageRoutingModule } from './inventory-routing.module';
+import { WriteOffPageRoutingModule } from './write-off-routing.module';
 
-import { InventoryPage } from './inventory.page';
-
+import { WriteOffPage } from './write-off.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    InventoryPageRoutingModule
+    WriteOffPageRoutingModule
   ],
-  declarations: [InventoryPage]
+  declarations: [WriteOffPage]
 })
-export class InventoryPageModule {}
+export class WriteOffPageModule {}
