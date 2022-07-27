@@ -11,7 +11,7 @@ import { RepoService } from 'src/app/services/repo.service';
 })
 export class EmployeeTypePage implements OnInit {
   //String used from the searchbar, used in the filter pipe to search venues.
-  public filter: string;
+  filter: string;
 
   //Create local venue array to be populated onInit.
   employeeTypeList: EmployeeType[] = [];

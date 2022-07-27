@@ -12,6 +12,7 @@ import { QualificationType } from 'src/app/models/qualification-type';
 import { Vat } from '../models/vat';
 import { SaleItem } from '../models/sale-item';
 import { SaleCategory } from 'src/app/models/sale-category';
+import { RefundReason } from 'src/app/models/refund-reason';
 import { appUser, appUserRegister } from '../models/appUser';
 import { ExerciseCategory } from '../models/exercise-category';
 import { Qualification } from '../models/qualification';
@@ -34,6 +35,7 @@ export class RepoService {
   VatController = 'Vat/';
   SaleItemController = 'SaleItem/';
   SaleCategoryController = 'SaleCategory/';
+  RefundReasonController = 'RefundReason/';
   PermissionController = 'Permission/';
   EmployeeController = 'Employee/';
   ExerciseCategoryController = 'ExerciseCategory/';
@@ -336,6 +338,28 @@ existsEmployee(id: number): Observable<any>{
 // }
 //Document Upload
 
+  // RefundReason:
+  // ------
+  // Create
+  createRefundReason(refundReason: any): Observable<any> {
+    return this.http.post<any>(`${this.base + this.RefundReasonController}add`, refundReason, this.httpOptions);
+  }
+  //Update
+  updateRefundReason(refundReasonId: number, refundReason: RefundReason): Observable<any> {
+    return this.http.put(`${this.base + this.RefundReasonController}update?id=${refundReasonId}`, refundReason, this.httpOptions);
+  }
+  //Delete
+  deleteRefundReason(refundReasonId: number): Observable<any> {
+    return this.http.delete(`${this.base + this.RefundReasonController}delete?id=${refundReasonId}`, this.httpOptions);
+  }
+  //GetAll
+  getRefundReasons(): Observable<any> {
+    return this.http.get(`${this.base + this.RefundReasonController}getAll`, this.httpOptions);
+  }
+  //GetMatch
+  getMatchRefundReason(input: string): Observable<any> {
+    return this.http.get(`${this.base + this.RefundReasonController}getMatch?input=${input}`, this.httpOptions);
+  }
 
 //BOOKING_TYPE
 //CREATE

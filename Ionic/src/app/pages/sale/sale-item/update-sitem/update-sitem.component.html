@@ -11,7 +11,7 @@
   <form [formGroup]="uSaleItemForm" (ngSubmit)="submitForm()"> 
     <br/>
     <div class="ion-text-center">
-      <p style="font-size:large">Please fill in the sale item information below</p>
+      <p style="font-size:large">Please update the sale item information below</p>
     </div>
     <ion-item>
       <ion-label position="floating">Name:</ion-label>
@@ -44,7 +44,7 @@
    
     <ion-item>      
       <ion-label>
-       <p>Quotable <ion-checkbox formControlName="itemQuotable" (ionChange)="checkBoxToggle($event)" color="secondary" ></ion-checkbox></p>
+       <p>Is this item quotable? <ion-checkbox formControlName="itemQuotable" (ionChange)="checkBoxToggle($event)" color="secondary" ></ion-checkbox></p>
       </ion-label>
     </ion-item>
 

@@ -43,7 +43,7 @@ export class ConfirmQualificationComponent{
             console.log('Add Venue from confirm:');
             //CallRepoToCreate
             this.qualificationService.createQualification(qualification);
-            this.global.showToast('The Qualification has been successfully added!');
+            this.global.showToast('The qualification has been successfully added!');
         } else if (this.choice === 2){
           const temp = {
             description: qualification.description,
@@ -56,7 +56,7 @@ export class ConfirmQualificationComponent{
             console.log(temp);
             //CallRepoToUpdate
             this.qualificationService.updateQualification(qualification.qualificationID,temp);
-            this.global.showToast('The Qualification has been successfully updated!');
+            this.global.showToast('The qualification has been successfully updated!');
         }
       }
           //dismiss modal

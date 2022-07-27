@@ -1,8 +1,8 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>View {{qualificationType.name}}</ion-title>
+    <ion-title>View "{{qualificationType.name}}"</ion-title>
     <ion-buttons slot="end">
-      <ion-button color="tertiary" (click)="dismissModal()"><ion-icon name="close-outline" size="large"></ion-icon></ion-button>
+      <ion-button color="tertiary" (click)="this.dismissModal()"><ion-icon name="close-outline" size="large"></ion-icon></ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
@@ -10,15 +10,22 @@
 <ion-content>
   <br/>
   <div class="ion-text-center">
-    <p style="font-size:large; color: white;margin-left: 10%;margin-right: 10%;">The following information is associated with the <br/> "{{qualificationType.name}}" qualification type</p>
+    <p style="font-size:large; color: white;margin-left: 10%;margin-right: 10%;">The following information corresponds with the selected qualification type</p>
   
-
     <ion-item > 
-      <ion-label>
-        <h2>Qualification Type Name:</h2>
-        <p class="ion-text-start">{{qualificationType.name}}</p>
-      </ion-label>
-    </ion-item>
+      <ion-label class="ion-text-left">Name:</ion-label>
+      <ion-label class="ion-text-right">{{qualificationType.name}}</ion-label>
+  </ion-item>
+
+  <!-- <p *ngIf="qualificationType.qualifications.length > 0" style="font-size:large; color: white;margin-left: 10%;margin-right: 10%;">Associated Records</p>
+    <div *ngFor="let qualification of qualificationType.qualifications">
+      <ion-item >
+        <ion-label class="ion-text-left">Qualification:</ion-label>
+        <ion-label class="ion-text-right">{{qualification['description']}}</ion-label>
+      </ion-item>
+      <br/>
+    </div> -->
+  
   </div>
   <br>
   <ion-button color="light" class="ion-float-right" style="margin-right:10%;width:30% " (click)="dismissModal()">Return</ion-button>

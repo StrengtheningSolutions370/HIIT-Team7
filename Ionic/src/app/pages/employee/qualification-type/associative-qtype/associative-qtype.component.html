@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>View {{qualificationType.name}}</ion-title>
+    <ion-title>Qualification Type Associated with Qualification/s </ion-title>
     <ion-buttons slot="end">
       <ion-button color="tertiary" (click)="this.global.dismissModal()"><ion-icon name="close-outline" size="large"></ion-icon></ion-button>
     </ion-buttons>
@@ -10,16 +10,15 @@
 <ion-content>
   <br/>
   <div class="ion-text-center">
-    <p style="font-size:large; color: white;margin-left: 10%;margin-right: 10%;">The following qualifications are associated with the <br/> "{{qualificationType.name}}" qualification type</p>
+    <p style="font-size:large; color: white;margin-left: 10%;margin-right: 10%;">The {{qualificationType.name}} qualification type cannot be deleted because the following qualification/s are associated with it</p>
   
 
+    <ion-list> 
     <ion-item *ngFor="let qualification of qualificationType.qualifications" > 
-      <ion-label>
-        <h2>Qualification Name:</h2>
-        <p class="ion-text-start">{{qualification['description']}}</p>
-      </ion-label>
+      <ion-label class="ion-text-center">{{qualification['description']}}</ion-label>
     </ion-item>
+    </ion-list>
   </div>
-  <br>
+
   <ion-button color="light" class="ion-float-right" style="margin-right:10%;width:30% " (click)="this.global.dismissModal()">Return</ion-button>
 </ion-content>

@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>View "{{dateFormatter(VAT.date)}}"</ion-title>
+    <ion-title>View "{{VAT.percentage}}%"</ion-title>
     <ion-buttons slot="end">
       <ion-button color="tertiary" (click)="this.global.dismissModal()"><ion-icon name="close-outline" size="large"></ion-icon></ion-button>
     </ion-buttons>
@@ -10,7 +10,7 @@
 <ion-content>
   <br/>
   <div class="ion-text-center">
-    <p style="font-size:large; color: white;margin-left: 10%;margin-right: 10%;">The following information corresponds with the selected VAT </p>
+    <p style="font-size:large; color: white;margin-left: 10%;margin-right: 10%;">The following information corresponds with the selected VAT percentage </p>
   
     <ion-item > 
       <ion-label class="ion-text-left">Date:</ion-label>

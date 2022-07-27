@@ -13,11 +13,13 @@ namespace Team7.Models.Repository
 
         void Update<T>(T Entity) where T : class;
 
-        //Task<RefundReason[]> GetAllRefundReasonsAsync();
+        Task<object> GetAllRefundReasonsAsync();
 
-        //Task<RefundReason[]> GetRefundReasonsAsync(string input);
+        Task<object> GetRefundReasonsAsync(string input);
 
-        //Task<RefundReason> GetRefundReasonIdAsync(int id);
+        Task<object> GetRefundReasonIdAsync(int id);
+
+        Task<RefundReason> _GetRefundReasonIdAsync(int id);
 
         Task<bool> SaveChangesAsync();
     }

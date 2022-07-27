@@ -2,14 +2,13 @@
 
   <br/>
   <!--Searchbar (must make function to search)-->
-  <ion-searchbar showCancelButton="focus" expand="block" placeholder='Search VAT' [(ngModel)]="filter"
+  <ion-searchbar showCancelButton="focus" expand="block" placeholder='Search VAT...' [(ngModel)]="filter"
     animated="true" debounce="200"></ion-searchbar>
-    <br/><br>
+    <br/>
 
   <div class="ion-text-center">
     <ion-button color="success" (click)="vatService.addVatInfoModal()">
       Add Vat
-      <ion-icon name="add" size="medium"></ion-icon>
     </ion-button>
   </div>
   <br/>

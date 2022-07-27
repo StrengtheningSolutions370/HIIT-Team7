@@ -13,7 +13,7 @@
   <form [formGroup]="cQualificationForm" (ngSubmit)="submitForm()"> 
     <br/>
     <div class="ion-text-center">
-      <p style="font-size:large">Please fill in the qualification information below.</p>
+      <p style="font-size:large">Please fill in the qualification information below</p>
     </div>
     <ion-item>
       <ion-label position="floating">Description:</ion-label>
@@ -21,7 +21,7 @@
       <br/>
     </ion-item>
     <span class="error ion-padding" *ngIf="errorControl.description.errors?.required && cQualificationForm.get('description').touched">
-      Qualification description is required.<br/>
+      Description is required<br/>
     </span>
     <ion-item>
       <ion-label position="floating">Qualification Type:</ion-label>
@@ -30,8 +30,10 @@
           <ion-select-option value="{{q.qualificationTypeID}},{{q.name}}">{{ q.name }}</ion-select-option>
         </ng-container>
       </ion-select>
-      <br/>
     </ion-item>
+    <span class="error ion-padding" *ngIf="errorControl.qualificationType.errors?.required && cQualificationForm.get('qualificationType').touched">
+      Qualification Type is required<br/>
+    </span>
 
     <!-- <pre>{{ qualificationTypeDropDown | json }}</pre> -->
 

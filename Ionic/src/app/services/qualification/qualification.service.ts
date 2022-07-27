@@ -82,7 +82,7 @@ export class QualificationService {
 
   matchingQualificationType(input: string) {
     console.log('qualificationService: Repo -> Matching qualificationtype');
-    this.repo.getMatchQualificationType(input);
+    return this.repo.getMatchQualificationType(input).toPromise;
   }
 
   //Qualification Methods

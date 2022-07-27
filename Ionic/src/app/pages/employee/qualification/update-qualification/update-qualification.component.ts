@@ -21,7 +21,7 @@ export class UpdateQualificationComponent implements ViewWillEnter {
 
   uQualificationForm: FormGroup = this.formBuilder.group({
     description: [, [Validators.required]],
-    qualificationType: [],
+    qualificationType: [, [Validators.required]],
   });
 
   //Used for validation within the form, if there are errors in the control, this method will return the errors.
@@ -47,7 +47,6 @@ export class UpdateQualificationComponent implements ViewWillEnter {
       console.log(this.qualification);
       if (this.qualification != null) {
         this.uQualificationForm.controls.description.setValue(this.qualification.description);
-        this.uQualificationForm.controls.qualificationType.setValue(this.qualification.qualificationTypeID);
       }
     }
 

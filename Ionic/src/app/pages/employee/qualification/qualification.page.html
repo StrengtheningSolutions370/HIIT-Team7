@@ -1,15 +1,15 @@
 <ion-content>
-
+  <br/>
   <ion-searchbar showCancelButton="focus" expand="block" placeholder='Search Qualification...' [(ngModel)]="filter" animated="true"
     debounce="200"></ion-searchbar>
 
-  <br /><br />
+  <br/>
   <div class="ion-text-center">
     <ion-button color="success" (click)="qualificationService.addQualificationInfoModal()">
       Add Qualification
     </ion-button>
   </div>
-  <br />
+  <br/>
 
   <ion-grid *ngIf="!isLoading">
     <ion-list *ngFor="let qualification of qualificationList | filter:filter, let i = index">

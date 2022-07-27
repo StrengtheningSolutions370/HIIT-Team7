@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ModalController, ToastController, AlertController } from '@ionic/angular';
+import { ModalController, ToastController, AlertController, ViewWillEnter } from '@ionic/angular';
 import { Qualification } from 'src/app/models/qualification';
 import { QualificationType } from 'src/app/models/qualification-type';
 import { GlobalService } from 'src/app/services/global/global.service';
@@ -17,7 +17,7 @@ import { RepoService } from 'src/app/services/repo.service';
   templateUrl: './add-qualification.component.html',
   styleUrls: ['./add-qualification.component.scss'],
 })
-export class AddQualificationComponent implements OnInit {
+export class AddQualificationComponent implements ViewWillEnter {
   @Input() qualification: Qualification;
   qualificationTypeDropDown!: QualificationType[];
 
@@ -43,7 +43,7 @@ export class AddQualificationComponent implements OnInit {
         }
       }
     );
-    console.log("AddTitle-ViewWillEnter");
+    console.log('AddTitle-ViewWillEnter');
     console.log(this.qualification);
     if (this.qualification != null) {
       this.cQualificationForm.controls.description.setValue(this.qualification.description);
@@ -58,7 +58,7 @@ export class AddQualificationComponent implements OnInit {
       const temp = {
         description: this.cQualificationForm.controls['description'].value,
         qualificationType: this.cQualificationForm.controls['qualificationType'].value.split(',')[0],
-        employee: null
+        employee: []
       };
       console.log(temp);
       this.qualificationService.confirmQualificationModal(1, temp, this.cQualificationForm.value['qualificationType'].split(',')[1]);

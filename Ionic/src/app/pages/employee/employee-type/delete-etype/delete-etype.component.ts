@@ -25,7 +25,7 @@ export class DeleteEtypeComponent implements ViewWillEnter {
   async delete(id: number){
     this.employeeService.deleteEmployeeType(id);
     this.global.dismissModal();
-    this.global.showToast('The Employee Type has been successfully deleted!');
+    this.global.showToast('The employee type has been successfully deleted!');
   }
 
 }

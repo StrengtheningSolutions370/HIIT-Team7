@@ -87,6 +87,14 @@ import { ConfirmEmployeeComponent } from './pages/employee/employee-page/confirm
 import { UpdateEmployeeComponent } from './pages/employee/employee-page/update-employee/update-employee.component';
 import { AssociativeEmployeeComponent } from './pages/employee/employee-page/associative-employee/associative-employee.component'
 
+//REFUND REASON IMPORTS:
+import { AddRefundReasonComponent } from 'src/app/pages/sale/refund-reason/add-refund-reason/add-refund-reason.component';
+import { DeleteRefundReasonComponent } from 'src/app/pages/sale/refund-reason/delete-refund-reason/delete-refund-reason.component';
+import { UpdateRefundReasonComponent } from 'src/app/pages/sale/refund-reason/update-refund-reason/update-refund-reason.component';
+import { ViewRefundReasonComponent } from 'src/app/pages/sale/refund-reason/view-refund-reason/view-refund-reason.component';
+import { ConfirmRefundReasonComponent } from 'src/app/pages/sale/refund-reason/confirm-refund-reason/confirm-refund-reason.component';
+import { AssociativeRefundReasonComponent } from 'src/app/pages/sale/refund-reason/associative-refund-reason/associative-refund-reason.component';
+
 //BOOKING TYPE IMPORTS:
 import { AddBtypeComponent } from './pages/booking/booking-type/add-btype/add-btype.component';
 import { AssociativeBtypeComponent } from './pages/booking/booking-type/associative-btype/associative-btype.component';
@@ -132,8 +140,9 @@ import { SidemenuComponent } from './sidemenu/sidemenu.component';
   //Side Menu
   SidemenuComponent,
   //Employee
-
-  ConfirmEmployeeComponent, AddEmployeeComponent, ConfirmEmployeeComponent, UpdateEmployeeComponent, ViewEmployeeComponent, DeleteEmployeeComponent, AssociativeEtypeComponent,
+  ConfirmEmployeeComponent, AddEmployeeComponent, ConfirmEmployeeComponent, UpdateEmployeeComponent, ViewEmployeeComponent, DeleteEmployeeComponent,
+  //RefundReason
+  ConfirmRefundReasonComponent, AddRefundReasonComponent, UpdateRefundReasonComponent, ViewRefundReasonComponent, DeleteRefundReasonComponent, AssociativeRefundReasonComponent,
   //BookingType
   AddBtypeComponent, AssociativeBtypeComponent, ConfirmBtypeComponent, DeleteBtypeComponent, UpdateBtypeComponent, ViewBtypeComponent
 

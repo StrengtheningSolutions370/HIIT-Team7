@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>New Qualification Details</ion-title>
+    <ion-title>Edit Qualification Details</ion-title>
     <ion-buttons slot="end">
       <ion-button color="tertiary" (click)="this.global.dismissModal()"><ion-icon name="close-outline" size="large"></ion-icon></ion-button>
     </ion-buttons>
@@ -13,7 +13,7 @@
   <form [formGroup]="uQualificationForm" (ngSubmit)="submitForm()"> 
     <br/>
     <div class="ion-text-center">
-      <p style="font-size:large">Please fill in the qualification information below.</p>
+      <p style="font-size:large">Please update the qualification information below</p>
     </div>
     <ion-item>
       <ion-label position="floating">Description:</ion-label>
@@ -21,7 +21,7 @@
       <br/>
     </ion-item>
     <span class="error ion-padding" *ngIf="errorControl.description.errors?.required && uQualificationForm.get('description').touched">
-      Qualification description is required.<br/>
+      Description is required.<br/>
     </span>
     <ion-item>
       <ion-label position="floating">Qualification Type:</ion-label>
@@ -30,8 +30,10 @@
           <ion-select-option value="{{q.qualificationTypeID}},{{q.name}}">{{ q.name }}</ion-select-option>
         </ng-container>
       </ion-select>
-      <br/>
     </ion-item>
+    <span class="error ion-padding" *ngIf="errorControl.qualificationType.errors?.required && uQualificationForm.get('qualificationType').touched">
+      Qualification Type is required<br/>
+    </span>
 
     <br/><br/>
 

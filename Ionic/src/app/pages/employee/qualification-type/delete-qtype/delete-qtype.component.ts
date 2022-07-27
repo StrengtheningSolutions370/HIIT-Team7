@@ -27,7 +27,7 @@ export class DeleteQtypeComponent implements ViewWillEnter {
   async delete(id: number){
     this.qualificationService.deleteQualificationType(id);
     await this.global.dismissModal();
-    this.global.showToast('The Qualification Type has been successfully deleted!');
+    this.global.showToast('The qualification type has been successfully deleted!');
   }
 
 

@@ -8,15 +8,19 @@
 </ion-header>
 
 <ion-content>
+  <br/>
+  <div class="ion-text-center">
+    <p style="font-size:large">Please update the qualification type information below</p>
+  </div>
+
   <form [formGroup]="uQTypeForm" (ngSubmit)="submitForm()"> 
-    <br/><br/>
     <ion-item>
       <ion-label position="stacked">Name:</ion-label>
       <ion-input formControlName="qualificationTypeName"  type="text" required=""></ion-input>
       <br/>
     </ion-item>
     <span class="error ion-padding" *ngIf="errorControl.qualificationTypeName.errors?.required">
-      Qualification Type name is required.
+      Name is required
       <br/>
     </span>
 

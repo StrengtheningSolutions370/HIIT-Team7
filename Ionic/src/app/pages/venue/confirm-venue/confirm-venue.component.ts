@@ -28,7 +28,7 @@ export class ConfirmVenueComponent {
    return this.venueService.matchingVenue(name,address).then(result => {
      console.log(result);
       if (result != false){
-        this.global.showAlert("The venue information entered already exists on the system","Venue Already Exists");
+        this.global.showAlert("The venue information entered already exists on the system","Duplicate Entry");
         return true;
       } else {
         return false;

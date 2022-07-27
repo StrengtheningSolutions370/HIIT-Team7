@@ -21,12 +21,12 @@
       <br/>
     </ion-item>
     <span class="error ion-padding" *ngIf="errorControl.name.errors?.required && cEmployeeTypeForm.get('name').touched">
-      Employee type name is required.<br/>
+      Name is required.<br/>
     </span>
 
     <ion-item>
       <ion-label position="floating">Description:</ion-label>
-      <ion-input formControlName="description" type="text" required="" id="description"></ion-input>
+      <ion-textarea class="ion-text-wrap" formControlName="description" type="text" required="" id="description"></ion-textarea>
       <br/>
     </ion-item>
     <span class="error ion-padding" *ngIf="errorControl.description.errors?.required && cEmployeeTypeForm.get('description').touched">

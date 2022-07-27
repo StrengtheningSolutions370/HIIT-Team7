@@ -1,15 +1,15 @@
 <ion-content>
-  <!--Searchbar [(ngModel)] is used to bind the searchTerm to the class, to be called when filtering.-->
+  <br/>
   <ion-searchbar expand="block" placeholder='Search Employee Type...' [(ngModel)]="filter"
     animated="true" debounce="200"></ion-searchbar>
 
-    <br/><br/>
+    <br/>
   <div class="ion-text-center">
     <ion-button class="ion-text-center"color="success" (click)="employeeService.addEmployeeTypeInfoModal()">
       Add Employee Type
     </ion-button>
   </div>
-  <br>
+  <br/>
   <ion-grid *ngIf="!isLoading">
     <ion-list *ngFor="let employeeType of this.employeeTypeList | filter:filter, let i = index"> 
       <ion-item-sliding>

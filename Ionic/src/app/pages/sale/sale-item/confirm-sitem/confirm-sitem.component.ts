@@ -24,7 +24,7 @@ export class ConfirmSitemComponent {
             if (this.choice === 1){
               this.saleService.matchingSaleItem(saleItem.name,saleItem.description).then(data => {
                 if (data != 0){
-                  this.global.showAlert("The sale item information entered already exists on the system","Sale Item Already Exists");
+                  this.global.showAlert("The sale item information entered already exists on the system","Duplicate Entry");
                   return;
                 } else {
                   console.log('Add Sale Item from confirm:');
@@ -38,7 +38,7 @@ export class ConfirmSitemComponent {
           } else if (this.choice === 2){
             this.saleService.matchingSaleItem(saleItem.name,saleItem.description).then(data => {
               if (data.result.length > 1){
-                this.global.showAlert("The sale item information entered already exists on the system","Sale Item Already Exists");
+                this.global.showAlert("The sale item information entered already exists on the system","Duplicate Entry");
                 return;
               } else {
                 console.log('Update Sale Item from confirm:');

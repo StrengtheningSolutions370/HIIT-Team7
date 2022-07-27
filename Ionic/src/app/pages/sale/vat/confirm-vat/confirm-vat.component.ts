@@ -17,7 +17,7 @@ export class ConfirmVatComponent {
     return this.VatService.matchingVat(percentage,date).then(result => {
       console.log(result);
        if (result != false){
-         this.global.showAlert("The VAT information entered already exists on the system","VAT Already Exists");
+         this.global.showAlert("The VAT information entered already exists on the system","Duplicate Entry");
          return true;
        } else {
          return false;

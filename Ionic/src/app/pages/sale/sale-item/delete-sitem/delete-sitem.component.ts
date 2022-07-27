@@ -29,7 +29,7 @@ export class DeleteSitemComponent implements ViewWillEnter {
     async delete(id: number){
       this.saleService.deleteSaleItem(id);
       this.global.dismissModal();
-      this.global.showToast("The Sale Item has been successfully deleted!");
+      this.global.showToast("The sale item has been successfully deleted!");
     }
 
     public createImg = (fileName: string) => { 

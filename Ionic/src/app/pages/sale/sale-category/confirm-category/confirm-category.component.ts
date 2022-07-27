@@ -15,12 +15,12 @@ export class ConfirmCategoryComponent{
   constructor(public global: GlobalService, public saleService: SalesService) {
   }
 
-  async checkMatch(name:string, address:string): Promise<boolean>{
+  async checkMatch(name: string, address: string): Promise<boolean>{
     return this.saleService.matchingSaleCategory(name,address).then(result => {
-      console.log("Check match result:");
+      console.log('Check match result:');
       console.log(result);
        if (result != 0){
-         this.global.showAlert("The sale category information entered already exists on the system","Sale Category Already Exists");
+         this.global.showAlert('The sale category information entered already exists on the system','Duplicate Entry');
          return true;
        } else {
          return false;
@@ -52,7 +52,7 @@ export class ConfirmCategoryComponent{
           }
         }
       }
-    )
+    );
   }
 
   async returnFrom(){

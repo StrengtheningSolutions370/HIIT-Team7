@@ -9,21 +9,24 @@
 
 <ion-content>
   <form [formGroup]="uEmployeeTypeForm" (ngSubmit)="submitForm()"> 
-    <br/><br/>
+    <br/>
+    <div class="ion-text-center">
+      <p style="font-size:large">Please update the employee type information below</p>
+    </div>
     <ion-item>
       <ion-label position="stacked">Name:</ion-label>
       <ion-input formControlName="name"  type="text" required=""></ion-input>
       <br/>
     </ion-item>
     <ion-item>
-      <ion-label position="stacked">Description:</ion-label>
-      <ion-input formControlName="description" type="text" required=""></ion-input>
+      <ion-label position="floating">Description:</ion-label>
+      <ion-textarea class="ion-text-wrap" formControlName="description" type="text" required="" id="description"></ion-textarea>
       <br/>
     </ion-item>
-    <!-- <span class="error ion-padding" *ngIf="errorControl.titleDescription.errors?.required">
-      Employee type description is required.
+    <span class="error ion-padding" *ngIf="errorControl.description.errors?.required && uEmployeeTypeForm.get('description').touched">
+      Description is required.
       <br/>
-    </span> -->
+    </span>
 
    
     <br><br/>

@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ModalController, ViewWillEnter } from '@ionic/angular';
 import { QualificationType } from 'src/app/models/qualification-type';
+import { GlobalService } from 'src/app/services/global/global.service';
 
 
 @Component({
@@ -12,7 +13,7 @@ import { QualificationType } from 'src/app/models/qualification-type';
 export class ViewQtypeComponent implements ViewWillEnter {
   @Input() qualificationType: QualificationType;
 
-  constructor(private modalCtrl: ModalController, public fb: FormBuilder) {
+  constructor(private modalCtrl: ModalController, public fb: FormBuilder, public global: GlobalService) {
   }
 
   ionViewWillEnter() {

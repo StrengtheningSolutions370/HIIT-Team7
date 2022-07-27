@@ -1,6 +1,6 @@
 <ion-content>
   <br/>
-  <ion-searchbar expand="block" placeholder='Search Sale Items..' [(ngModel)]="filter"
+  <ion-searchbar expand="block" placeholder='Search Sale Item...' [(ngModel)]="filter"
   animated="true" debounce="200"></ion-searchbar>
 
   <br/>
@@ -21,28 +21,22 @@
 
       <ion-card >
           <ion-card-header (click)="saleService.viewSaleItemInfoModal(saleItem)">
-
-              <ion-card-title style="color:#e7e8ec;">
-               {{saleItem.name}}
-              </ion-card-title>  
-                <!--Sale Image--> 
-                <ion-avatar item-start button>
-                  <!--Employee Image-->
-                  <!--<img [src]="this.global.createImg(saleItem.photo)" alt="sale item image">-->
-                </ion-avatar>                      
-            <ion-row *ngIf="saleItem.quotable == false">
-              Price: <p class="ion-text-right">R{{saleItem.price}}</p>
-            </ion-row>
-            <ion-row *ngIf="saleItem.quotable == false"> 
-              Quantity in Stock: <p class="ion-text-right">{{saleItem.quantity}}</p>
-            </ion-row>
-            </ion-card-header>
+            <ion-card-title style="color:#e7e8ec;">
+              {{saleItem.name}}
+            </ion-card-title>  
+            <p>{{saleItem.description}}</p>
+          </ion-card-header>
           <ion-card-content style="color:#b1b2b6;">
-            <!--<ion-row>
-              Description: {{saleItem.description}}
-            </ion-row>-->
+            
+            <ion-item>
+              <ion-thumbnail slot="start">
+                <img src="this.global.createImg(saleItem.photo)">
+              </ion-thumbnail>
+              <ion-label>{{saleItem.quotable}}</ion-label> <br/>
+              <ion-label>{{saleItem.saleCategoryName}}</ion-label>
+            </ion-item>
          
-            <br />
+            <br/>
             <ion-row>
               <ion-col col-4>
                 <ion-button class="fifty" color="secondary" (click)="saleService.updateSaleItemInfoModal(saleItem)"><ion-icon name="refresh"></ion-icon>Update</ion-button>

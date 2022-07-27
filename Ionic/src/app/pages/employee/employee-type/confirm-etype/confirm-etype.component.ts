@@ -25,7 +25,7 @@ export class ConfirmEtypeComponent {
     return this.employeeService.matchingEmployeeType(name).then(result => {
       console.log(result);
       if (result !== 0) {
-        this.global.showAlert('The Employee Type information entered already exists on the system', 'Employee Type Already Exists');
+        this.global.showAlert('The employee type information entered already exists on the system', 'Duplicate Entry');
         return true;
       } else {
         return false;
@@ -44,12 +44,12 @@ export class ConfirmEtypeComponent {
           console.log('Add Employee Type from confirm:');
           //CallRepoToCreate
           this.employeeService.createEmployeeType(employeeType);
-          this.global.showToast('The Title has been successfully added!');
+          this.global.showToast('The employee type has been successfully added!');
         } else if (this.choice === 2) {
           console.log('Update Venue from confirm:');
           //CallRepoToUpdate
           this.employeeService.updateEmployeeType(employeeType.employeeTypeID, employeeType);
-          this.global.showToast('The Employee Type has been successfully updated!');
+          this.global.showToast('The employee type has been successfully updated!');
         }
       }
       //dismiss modal

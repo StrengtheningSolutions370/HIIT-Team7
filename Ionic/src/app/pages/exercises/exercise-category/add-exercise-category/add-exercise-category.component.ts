@@ -23,7 +23,7 @@ export class AddExerciseCategoryComponent implements ViewWillEnter {
     exerciseCategoryDescription: ['', [Validators.required]]
   });
 
-  constructor(private global: GlobalService,  public formBuilder: FormBuilder,
+  constructor(public global: GlobalService,  public formBuilder: FormBuilder,
     public exerciseService: ExerciseService ) { }
 
   //Used for validation within the form, if there are errors in the control, this method will return the errors.
