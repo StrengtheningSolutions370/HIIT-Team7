@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -30,7 +31,8 @@ namespace Team7.Models.Repository
             DB.Update(Entity);
         }
 
-
+        
+ 
         //public async Task<PriceHistory[]> GetAllPriceHistorysAsync()
         //{
         //    IQueryable<PriceHistory> query = DB.PriceHistory;
@@ -41,17 +43,16 @@ namespace Team7.Models.Repository
 
         //public async Task<PriceHistory[]> GetPriceHistorysAsync(string input)
         //{
-        //    IQueryable<PriceHistory> query = DB.PriceHistory.Where(v => v.Name == input || v.Address == input);
+        //    IQueryable<PriceHistory> query = DB.PriceHistory.Where(v => v == input || v. == input);
         //    if (!query.Any())
         //    {
         //        return null;
         //    }
         //    else
         //    {
-        //        return await query.ToArrayAsync();
+        //       return await query.ToArrayAsync();
         //    }
         //    return null;
-
         //}
 
         //public async Task<PriceHistory> GetPriceHistoryIdAsync(int id)

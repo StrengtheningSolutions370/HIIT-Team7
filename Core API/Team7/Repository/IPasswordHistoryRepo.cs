@@ -13,6 +13,8 @@ namespace Team7.Models.Repository
 
         void Update<T>(T Entity) where T : class;
 
+        public Task<PasswordHistory[]> GetByUserIdAsync(string id);
+
         //Task<PasswordHistory[]> GetAllPasswordHistorysAsync();
 
         //Task<PasswordHistory[]> GetPasswordHistorysAsync(string input);

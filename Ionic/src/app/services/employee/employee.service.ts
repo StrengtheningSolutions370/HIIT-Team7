@@ -24,6 +24,7 @@ import { ViewEmployeeComponent } from 'src/app/pages/employee/employee-page/view
 import { RepoService } from '../repo.service';
 import { TitleService } from '../title/title.service';
 import { Roles } from 'src/app/models/roles.enum';
+import { GlobalService } from '../global/global.service';
 
 @Injectable({
   providedIn: 'root'
@@ -44,7 +45,7 @@ public get employeeList(){
 private tempE : Employee[];
 
   constructor(public repo: RepoService, private modalCtrl: ModalController,
-    public titleService: TitleService) {
+    public titleService: TitleService, private global : GlobalService) {
     //Receive the employee types from the repo (API).
     this.getAllEmployeeTypes();
 
@@ -105,9 +106,13 @@ private tempE : Employee[];
             resolve(true);
           },
           error: () => {
+            this.fetchEmployeesEvent.emit();
             _(false);
           }
         })
+        .add(() => { 
+          this.global.endNativeLoad(); 
+        });
       });
       // .subscribe(
       //   {
@@ -122,11 +127,19 @@ private tempE : Employee[];
       //create non-admin employee:
 
       return new Promise<any>((resolve, _) => {
-        this.repo.createEmployee(payload).subscribe({
+        this.repo.createEmployee(payload)
+        .subscribe({
           next: () => {
             this.fetchEmployeesEvent.emit();
             resolve(true);
+          },
+          error: () => {
+            this.fetchEmployeesEvent.emit();
+            _(false);
           }
+        })
+        .add(() => {
+          this.global.endNativeLoad();
         })
       });
       // .subscribe(
@@ -165,7 +178,7 @@ private tempE : Employee[];
       {
         next: () => {
           console.log('VENUE UPDATED');
-          this.fetchEmployeeTypesEvent.emit(employeeType);
+          this.fetchEmployeeTypesEvent.emit();
         }
       }
     );
@@ -230,9 +243,10 @@ private tempE : Employee[];
           resolve(true);
         },
         error: () => {
+          this.fetchEmployeesEvent.emit();
           _(false);
         }
-      })
+      }).add(() => { this.global.endNativeLoad(); });
     });
 
   }
@@ -249,6 +263,7 @@ private tempE : Employee[];
 
   deleteEmployee(id: string) : Promise<any> {
     return new Promise<any>((resolve, reject) => {
+      this.global.nativeLoad("Deleting...");
       this.repo.deleteEmployee(id).subscribe(
         {
           next: res => {
@@ -259,7 +274,9 @@ private tempE : Employee[];
             resolve(false);
           }
         }
-      );
+      ).add(() => {
+        this.global.endNativeLoad();
+      });
     });
   }
 
@@ -466,11 +483,7 @@ private tempE : Employee[];
         });
         //Update the current vat list with the vat list from the confirm modal.
         modal.onDidDismiss().then(() => {
-
-          // this.repo.getEmployees();
-          this.fetchEmployeesEvent.emit();
           resolve(true);
-
         });
         await modal.present();
 
@@ -485,11 +498,7 @@ private tempE : Employee[];
           }
         });
         modal.onDidDismiss().then(() => {
-          // this.repo.getSaleItems();
-          // this.updateSaleItemInfoModal(saleItem);
-          this.fetchEmployeesEvent.emit();
           resolve(true);
-
         });
         await modal.present();
       } else {

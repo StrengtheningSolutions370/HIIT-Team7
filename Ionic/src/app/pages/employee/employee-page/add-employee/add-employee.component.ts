@@ -238,11 +238,7 @@ export class AddEmployeeComponent implements OnInit{
   }
 
   submitForm() {
-
-    
-
     const emp = new Employee();
-
     emp.Name = this.cEmployeeForm.value['name'];
     emp.Surname = this.cEmployeeForm.value['surname'];
     emp.Photo = this.photo;
@@ -254,12 +250,10 @@ export class AddEmployeeComponent implements OnInit{
     emp.EmployeeTypeID = this.cEmployeeForm.value['employeeTypeId'];
     emp.QualificationID = this.cEmployeeForm.value['qualificationId'];
     emp.role = this.cEmployeeForm.value['role'];
-
     //create confirm modal here:
     this.employeeService.confirmEmployeeModal(1, emp).then(() => {
       this.dismissModal();
     });
-
    }
 
   async sucAdd() {

@@ -194,9 +194,19 @@ export const routes: Routes = [
     //loadChildren component here for attendance once generated
   },
   {
+    path: 'password',
+    loadChildren: () => import('./pages/passwordmanager/passwordmanager.module').then( m => m.PasswordmanagerPageModule),
+    // canActivate: [AuthGaurdService],
+    // data : {
+    //   roles: [AllRoles]
+    // }
+  },
+  {
     path: '**', //this route object must be last
     redirectTo: 'login',
-  }]
+  },
+]  
+
 
 @NgModule({
   imports: [

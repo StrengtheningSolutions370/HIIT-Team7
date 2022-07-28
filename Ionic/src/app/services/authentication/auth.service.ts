@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { CookieService } from 'ngx-cookie-service';
 import { BehaviorSubject } from 'rxjs';
 import { appUser, appUserRegister } from 'src/app/models/appUser';
 import { GlobalService } from '../global/global.service';
@@ -73,11 +72,9 @@ export class AuthService {
     await this.global.nativeLoad('loading...');
     return this.repo.login(appUser).subscribe((result : any) => {
       var token = result.value.token;
-      var expiration = result.value.expiration;
-      var date = new Date(expiration);
-      var epoch = date.getTime(); //convert TZ string to epoch
-      this.storage.setKey('token', token);
-      this.navLogin(); //change observable to show navbar
+      this.storage.setKey('token', token).then(() => {
+        this.navLogin(); //change observable to show navbar after set for token
+      });
       this.router.navigate(['home']);
     }).add(() =>{this.global.endNativeLoad()});
   }

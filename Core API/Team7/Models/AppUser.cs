@@ -16,5 +16,9 @@ namespace Team7.Models
 
         public string LastName { get; set; }
 
+        public string OTP { get; set; }
+
+        public virtual ICollection<PasswordHistory> PasswordHistory { get; set; }
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -28,6 +29,14 @@ namespace Team7.Models.Repository
         public void Update<T>(T Entity) where T : class
         {
             DB.Update(Entity);
+        }
+
+        public async Task<PasswordHistory[]> GetByUserIdAsync(string id)
+        {
+            IQueryable<PasswordHistory> query = DB.PasswordHistory.Where(h => h.UserID == id);
+            if (!query.Any())
+                return null;
+            return await query.ToArrayAsync();
         }
 
 

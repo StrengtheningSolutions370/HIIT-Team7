@@ -29,36 +29,37 @@ export class EmployeePagePage implements OnInit {
     
   }
   
-  ngOnInit() {
-    this.global.nativeLoad("Loading...");
-    this.fetchEmployees();
-    this.employeeService.fetchEmployeesEvent.subscribe({
-      next: () => {
-        this.fetchEmployees().then(() => this.global.endNativeLoad());
-      }
-    });
-  }
+    ngOnInit() {
+      this.employeeService.fetchEmployeesEvent.subscribe({
+        next: async () => {
+          this.global.nativeLoad("Loading...");
+          this.fetchEmployees().then((data : any) => {
+            this.loading = false;
+            this.employees = data;
+            this.employeesOriginal = data;
+            if (this.employees.length == 0) {
+              this.noresults = true;
+            }
+            this.employees.map((el : any) => {
+              this.pushBackRole(el.role[0]);
+            });
+            this.removeduplicates();
+          });
+        },
+      });
+      this.employeeService.fetchEmployeesEvent.emit();
+    }
 
-  fetchEmployees() {
+  fetchEmployees() : Promise<any> {
     return new Promise<any>((resolve, _) => {
       this.loading = true;
       this.employees = [];
       this.employeesOriginal = [];
       this.employeeService.getAllEmployees().subscribe({
         next: (data : any) => {
-          this.loading = false;
-          this.employees = data;
-          this.employeesOriginal = data;
-          if (this.employees.length == 0) {
-            this.noresults = true;
-          }
-          this.employees.map((el : any) => {
-            this.pushBackRole(el.role[0]);
-          });
-          this.removeduplicates();
-          resolve(true);
+          resolve(data);
         }
-      });
+      }).add((() => { this.global.endNativeLoad(); }));;
     })
   }
 

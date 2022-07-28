@@ -23,5 +23,9 @@ namespace Team7.ViewModels
 
         public string TitleId { get; set; }
 
+        public string newPassword { get; set; }
+
+        public string OTP { get; set; }
+
     }
 }

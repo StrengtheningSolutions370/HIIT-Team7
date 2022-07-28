@@ -26,6 +26,7 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
     <PackageReference Include="System.Threading.Tasks" Version="4.3.0" />
+    <PackageReference Include="Twilio" Version="5.78.0" />
   </ItemGroup>
 
   <ItemGroup>

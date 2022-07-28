@@ -33,7 +33,7 @@ export class GlobalService {
         const res = await this.loadingCtrl.create({
           message: message,
           spinner: spinner ? spinner : 'bubbles',
-          duration: 3000
+          // duration: 3000 //prevents going away till end load is called
         });
         res.present().then(() => {
           if (!this.loading) {

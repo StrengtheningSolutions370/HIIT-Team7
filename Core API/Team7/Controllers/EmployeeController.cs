@@ -103,6 +103,7 @@ namespace Team7.Controllers
         //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme, Roles = "superuser")]
         public async Task<IActionResult> createAdmin()
         {
+
             var unix = timeStamp();
 
             var formCollection = await Request.ReadFormAsync();
@@ -121,6 +122,13 @@ namespace Team7.Controllers
             string TitleId = employee["TitleID"].ToString();
             string EmployeeTypeId = employee["EmployeeTypeID"].ToString();
             string QualificationID = employee["QualificationID"].ToString();
+
+            //check if already exists:
+            var flag = await _userManager.FindByEmailAsync(Email);
+            if (flag != null)
+            {
+                StatusCode(StatusCodes.Status409Conflict, "User already exisit?"); //CHECKHERE
+            }
 
             //check if role exisit
             var role = "admin";
@@ -346,6 +354,13 @@ namespace Team7.Controllers
             string EmployeeTypeId = employee["EmployeeTypeID"].ToString();
             string QualificationID = employee["QualificationID"].ToString();
             string uvmRole = employee["role"].ToString();
+
+            //check if already exists:
+            var f = await _userManager.FindByEmailAsync(Email);
+            if (f != null)
+            {
+                StatusCode(StatusCodes.Status409Conflict, "User already exisit?"); //CHECKHERE
+            }
 
             string[] supportedRole = { "trainer", "generalemployee" };
             bool flag = false;
@@ -660,8 +675,9 @@ namespace Team7.Controllers
             {
                 StatusCode(StatusCodes.Status409Conflict, new
                 {
+                    error = "Employee cannot be deleted?", //CHECKHERE
                     employee = employeeRecord
-                });
+                }); //return employss with loaded for the Associative modal
             }
 
             //employee can be deleted as they have no links:
